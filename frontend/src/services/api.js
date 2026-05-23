@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'notepad C:\Users\nandana\travel-itinerary-app\frontend\src\services\api.js';
+const API_URL = 'https://travel-itinerary-app.up.railway.app/api';
 
 const api = axios.create({
   baseURL: API_URL,
