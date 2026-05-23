@@ -11,20 +11,20 @@ const Itinerary = () => {
   const [showShare, setShowShare] = useState(false);
 
   useEffect(() => {
+    const fetchItinerary = async () => {
+      try {
+        const response = await api.get(`/itinerary/${id}`);
+        setItinerary(response.data);
+      } catch (error) {
+        console.error('Error fetching itinerary:', error);
+        navigate('/dashboard');
+      } finally {
+        setLoading(false);
+      }
+    };
+    
     fetchItinerary();
-  }, [id]);
-
-  const fetchItinerary = async () => {
-    try {
-      const response = await api.get(`/itinerary/${id}`);
-      setItinerary(response.data);
-    } catch (error) {
-      console.error('Error fetching itinerary:', error);
-      navigate('/dashboard');
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [id, navigate]);
 
   const handleShare = async () => {
     try {
